@@ -23,9 +23,11 @@ fi
 IMG=$(readlink -f "$IMG")
 DIR=$(readlink -f "$DIR")
 
+# Make sure we're operating out of the FMK directory
+cd $(dirname $(readlink -f $0))
 
 # Source in/Import shared settings. ${DIR} MUST be defined prior to this!
-source shared-ng.inc
+source ./shared-ng.inc
 
 # Check usage
 if [ "${IMG}" = "" ] || [ "${IMG}" = "-h" ]; then
