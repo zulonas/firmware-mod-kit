@@ -20,8 +20,8 @@ if [[ ${NEXT_PARAM} = *--Append* ]]; then
 	APPEND_SIZE=$(echo ${NEXT_PARAM} | awk  -F"[=]" '{print $2}')
 fi
 
-IMG=$(readlink -f $IMG)
-DIR=$(readlink -f $DIR)
+IMG=$(readlink -f "$IMG")
+DIR=$(readlink -f "$DIR")
 
 
 # Source in/Import shared settings. ${DIR} MUST be defined prior to this!
