@@ -14,8 +14,11 @@ fi
 DIR=$(readlink -f $DIR)
 
 
-# Order matters here!
-source shared-ng.inc
+# Make sure we're operating out of the FMK directory
+cd $(dirname $(readlink -f $0))
+
+# Source in/Import shared settings. ${DIR} MUST be defined prior to this!
+source ./shared-ng.inc
 
 BINWALK=$(readlink -f $BINWALK)
 
