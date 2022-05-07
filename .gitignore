@@ -10,6 +10,8 @@ cleanup.log
 src/Makefile
 src/config.log
 src/config.status
+src/autom4te.cache
+src/configure
 
 # Compiled Binaries
 src/addpattern
