@@ -7,6 +7,7 @@ Build_Tools ()
 		cd src 
 		if [ ! -f "./Makefile" ]; then	
 			autoconf -Wall 2>&1 >> /dev/null
+			autoreconf --install 2>&1
 			./configure 2>&1 >> /dev/null
 		fi
 		make -s
