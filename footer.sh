@@ -25,6 +25,7 @@ echo "$FOOTER_FIRST"
 # Get last address, most likely end of header, get hex address and convert to decimal
 FOOTER_LAST=$((16#$(tail -1 footer.txt)))
 echo "$FOOTER_LAST"
+rm -f footer.txt
 
 FOOTER_SIZE=$(($FOOTER_LAST - $FOOTER_FIRST))
 echo "$FOOTER_SIZE"
