@@ -14,6 +14,7 @@ src/autom4te.cache
 src/configure
 src/config.guess
 src/config.sub
+footer.txt
 
 # Compiled Binaries
 src/addpattern
