@@ -388,7 +388,6 @@ extern void generate_file_priorities(struct dir_info *dir, int priority, struct 
 extern struct priority_entry *priority_list[65536];
 void progress_bar(long long current, long long max, int columns);
 
-
 struct queue *queue_init(int size)
 {
 	struct queue *queue = malloc(sizeof(struct queue));
@@ -2718,7 +2717,7 @@ struct inode_info *lookup_inode(struct stat *buf)
 }
 
 
-inline void add_dir_entry(char *name, char *pathname, struct dir_info *sub_dir, struct inode_info *inode_info, void *data, struct dir_info *dir)
+static inline void add_dir_entry(char *name, char *pathname, struct dir_info *sub_dir, struct inode_info *inode_info, void *data, struct dir_info *dir)
 {
 	if((dir->count % DIR_ENTRIES) == 0)
 		if((dir->list = realloc(dir->list, (dir->count + DIR_ENTRIES) * sizeof(struct dir_ent *))) == NULL)
