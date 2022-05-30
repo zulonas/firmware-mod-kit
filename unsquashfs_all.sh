@@ -12,28 +12,29 @@ ROOT="./src"
 # should order in ascending version, 
 # since newer versions may be able to extact older
 # and we want *first* supporting version (some exceptions apply)
-SUBDIRS="squashfs-2.1-r2 \
-squashfs-3.0 \
-squashfs-3.0-lzma-damn-small-variant \
-others/squashfs-2.0-nb4 \
-others/squashfs-2.2-r2-7z \
-others/squashfs-3.0-e2100 \
-others/squashfs-3.2-r2 \
-others/squashfs-3.2-r2-lzma \
-others/squashfs-3.2-r2-lzma/squashfs3.2-r2/squashfs-tools \
-others/squashfs-3.2-r2-hg612-lzma \
-others/squashfs-3.2-r2-wnr1000 \
-others/squashfs-3.2-r2-rtn12 \
-others/squashfs-3.3 \
-others/squashfs-3.3-lzma/squashfs3.3/squashfs-tools \
-others/squashfs-3.3-grml-lzma/squashfs3.3/squashfs-tools \
-others/squashfs-3.4-cisco \
-others/squashfs-3.4-nb4 \
-others/squashfs-4.2-official \
-others/squashfs-4.2 \
-others/squashfs-4.0-lzma \
-others/squashfs-4.0-realtek \
-others/squashfs-hg55x-bin"
+SUBDIRS="\
+squashfs-tools/squashfs-2.1-r2 \
+squashfs-tools/squashfs-3.0 \
+squashfs-tools/squashfs-3.0-lzma-damn-small-variant \
+squashfs-tools/squashfs-2.0-nb4 \
+squashfs-tools/squashfs-2.2-r2-7z \
+squashfs-tools/squashfs-3.0-e2100 \
+squashfs-tools/squashfs-3.2-r2 \
+squashfs-tools/squashfs-3.2-r2-lzma \
+squashfs-tools/squashfs-3.2-r2-lzma/squashfs3.2-r2/squashfs-tools \
+squashfs-tools/squashfs-3.2-r2-hg612-lzma \
+squashfs-tools/squashfs-3.2-r2-wnr1000 \
+squashfs-tools/squashfs-3.2-r2-rtn12 \
+squashfs-tools/squashfs-3.3 \
+squashfs-tools/squashfs-3.3-lzma/squashfs3.3/squashfs-tools \
+squashfs-tools/squashfs-3.3-grml-lzma/squashfs3.3/squashfs-tools \
+squashfs-tools/squashfs-3.4-cisco \
+squashfs-tools/squashfs-3.4-nb4 \
+squashfs-tools/squashfs-4.2-official \
+squashfs-tools/squashfs-4.2 \
+squashfs-tools/squashfs-4.0-lzma \
+squashfs-tools/squashfs-4.0-realtek \
+squashfs-tools/squashfs-hg55x-bin"
 TIMEOUT="60"
 MKFS=""
 

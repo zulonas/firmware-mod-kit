@@ -16,9 +16,12 @@ all:
 	make -C ./squashfs-2.0-nb4
 	make -C ./squashfs-4.2
 	make -C ./squashfs-4.2-official
+	make -C ./squashfs-2.1-r2
+	make -C ./squashfs-3.0
+	make -C ./squashfs-3.0-lzma-damn-small-variant
 
 clean:
-	make -C ./squashfs-2.2-r2-7z
+	make -C ./squashfs-2.2-r2-7z clean
 	make -C ./squashfs-3.0-e2100 clean
 	make -C ./squashfs-3.2-r2 clean
 	make -C ./squashfs-3.2-r2-lzma clean
@@ -35,3 +38,6 @@ clean:
 	make -C ./squashfs-2.0-nb4 clean
 	make -C ./squashfs-4.2 clean
 	make -C ./squashfs-4.2-official clean
+	make -C ./squashfs-2.1-r2 clean
+	make -C ./squashfs-3.0 clean
+	make -C ./squashfs-3.0-lzma-damn-small-variant clean
