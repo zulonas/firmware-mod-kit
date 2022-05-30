@@ -10,7 +10,7 @@ Build_Tools ()
 			autoreconf --install 2>&1
 			./configure 2>&1
 		fi
-		make -s
+		make
 		if [ $? -eq 0 ]; then
 			cd - 2>&1
 		else
