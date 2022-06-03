@@ -2,6 +2,9 @@
 #
 # $Id: ipkg_install.sh 336 2012-08-04 00:12:14Z jeremy.collake@gmail.com $
 #
+# Make sure we're operating out of the FMK directory
+cd $(dirname $(readlink -f $0))
+
 . "./shared.inc"
 ### 20110225-MCT The VERSION is set in the shared.inc file from a single external source now.
 VERSION="${SHARED_VERSION}"
@@ -36,6 +39,7 @@ VERSION="${SHARED_VERSION}"
 #
 #
 #
+cd -
 echo "$0 v$VERSION, (c)2006-2012 Jeremy Collake"
 echo " !!WARNING!!! This script is in early alpha stage of development"
 
