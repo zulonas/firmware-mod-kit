@@ -18,7 +18,7 @@ VERSION="${SHARED_VERSION}"
 #
 # USAGE: ipkg_install_all.sh PACKAGES_FOLDER WORKING_DIRECTORY/
 #
-# PACKAGE_SOURCE is the path to the .PKG file(s). 
+# PACKAGE_SOURCE is the path to the .PKG file(s).
 #
 # WORKING_DIRECTORY is the working directory supplied to
 #  extract_firmware.sh.

@@ -37,8 +37,8 @@ CleanupTmp()
 # DeleteWithFolderTemplate ( target_dir , template_dir )
 #
 # deletes files and folders from a target folder
-# based on their presence in a template folder 
-# (all files/dirs in template folder deleted from 
+# based on their presence in a template folder
+# (all files/dirs in template folder deleted from
 #  target folder).
 #
 # This function calls itself recursively.
@@ -66,11 +66,11 @@ for i in `ls $TEMPLATE_DIR`; do
 			rmdir $TARGET_DIR/$i >> /dev/null 2>&1
 		fi
 	elif [ -f $TEMPLATE_DIR/$i ]; then
-		echo " Removing file at $TARGET_DIR/$i"		
+		echo " Removing file at $TARGET_DIR/$i"
 		rm $TARGET_DIR/$i >> /dev/null	2>&1
 	else
 		echo " WARNING: Unknown file type at $TEMPLATE_DIR/$i"
-	fi	
+	fi
 done
 }
 
@@ -121,10 +121,10 @@ if [ $? != 0 ]; then
 	cd "$OLD_DIR"
 	exit 1
 else
-	echo " Package removed successfully!"	
+	echo " Package removed successfully!"
 fi
 
-# 
+#
 # using . as a template, delete from working rootfs
 #
 cd "$OLD_DIR"
@@ -137,21 +137,21 @@ echo " Examining control files $2/rootfs ..."
 echo " Pay attention to the dependencies as you"
 echo "  may want to remove some of them if not"
 echo "  used by any other installed package."
-echo 
+echo
 tar -xzf "tmp/control.tar.gz" -C "tmp/"
 if [ $? != 0 ] || [ ! -e "tmp/control" ]; then
 	echo " ERROR: Extraction failed of control files (missing from IPK?)"
 	CleanupTmp "." "$INSIDE_NAME"
 	cd "$OLD_DIR"
 	exit 1
-else	
+else
 	# todo: add proper dependency checking and more
-	cat "tmp/control"		
+	cat "tmp/control"
 	# if successeful, remove the package from the installed_packages
 	# folder
 	CleanupTmp "." "$INSIDE_NAME"
 	echo " Removing package IPK from installed_packages ..."
-	cd "$OLD_DIR"			
+	cd "$OLD_DIR"
 fi
 echo " --------------------------------------------"
 ##################################################

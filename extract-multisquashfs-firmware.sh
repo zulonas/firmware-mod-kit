@@ -5,14 +5,14 @@ DIR="${2}"
 NEXT_PARAM=""
 
 #file size may become bigger when rebuild bin file
-#(total size less than before) ,so we have to append useless data,and remove them when rebuild 
+#(total size less than before) ,so we have to append useless data,and remove them when rebuild
 #default keep 100KB left
 APPEND_SIZE=102400
 
 if [ "${DIR}" = "" ]; then
 	DIR="fmk"
 	NEXT_PARAM="${2}"
-else 
+else
 	NEXT_PARAM="${3}"
 fi
 
@@ -62,8 +62,8 @@ IFS='
 '
 
 IMG_FILE=$(basename ${IMG})
-IMG_NAME=${IMG_FILE%.*} 
-IMG_EXT=${IMG_FILE##*.} 
+IMG_NAME=${IMG_FILE%.*}
+IMG_EXT=${IMG_FILE##*.}
 
 SKIP=0
 N=0
@@ -97,13 +97,13 @@ for LINE in $(cat ${BINLOG})
 		dd if=/dev/zero of="${SP_IMG}" bs=${TOTAL_SIZE} count=1 2>/dev/null
 		dd if="${IMG}" bs=1 skip=${SKIP} count=${COUNT} of="${SP_IMG}" conv=notrunc 2>/dev/null
 		SKIP=$((${SKIP}+${COUNT}))
-		
+
 		#log for build
 		SP_DIR="${DIR}/${IMG_NAME}_${N}"
 		echo  "${SP_DIR}" >> "${CONFLOG}"
 
 		./extract-firmware.sh "${SP_IMG}" "${SP_DIR}"
-		
+
 		let N++
 	fi
 done

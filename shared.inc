@@ -19,15 +19,15 @@ PlatformIdentify ()
 {
 SYSNAME=`uname`
 	if [ "$SYSNAME" = "Linux" ]; then
-		echo " LINUX system detected. Compatibility ok."	
+		echo " LINUX system detected. Compatibility ok."
 	elif [ `expr "$SYSNAME" : "Darwin"` = 6 ]; then
 		echo " OS X system detected. **BETA TESTING**"
 		echo " This platform is not well tested."
-		WarningPrompt				
+		WarningPrompt
 	elif [ `expr "$SYSNAME" : "CYGWIN"` = 6 ]; then
 		echo " CYGWIN system detected. **BETA TESTING** Built images may have problems."
 		echo " This platform is not well tested."
-		WarningPrompt			
+		WarningPrompt
 	else
 		echo " Unknown system detected. Compatibility state is unknown."
 		WarningPrompt
@@ -43,7 +43,7 @@ WORKING_DIR=$2
 	rm "$WORKING_DIR/test12345612.tmp" >> /dev/null 2>&1
 	echo test > "$WORKING_DIR/test12345612.tmp"
 	if [ -e "$WORKING_DIR/teST12345612.tmp" ]; then
-		echo "  WARNING: File system $WORKING_DIR is not case sensitive."		
+		echo "  WARNING: File system $WORKING_DIR is not case sensitive."
 		echo "      For some firmwares this can cause troubles in the"
 		echo "      built images that result in runtime errata or"
 		echo "      even refuse to boot."
@@ -51,9 +51,9 @@ WORKING_DIR=$2
 			rm "$WORKING_DIR/test12345612.tmp" >> /dev/null 2>&1
 			exit 2
 		else
-			WarningPrompt				
-		fi	
-	fi	
+			WarningPrompt
+		fi
+	fi
 	if [ ! -e "$WORKING_DIR/test12345612.tmp" ]; then
 		echo "  ERROR: File system $WORKING_DIR is not writable."
 		rm "$WORKING_DIR/test12345612.tmp" >> /dev/null 2>&1
@@ -69,10 +69,10 @@ WORKING_DIR=$2
 #	ln -s -f $1/asustrx $2/asustrx
 #	ln -s -f $1/untrx $2/untrx
 #	ln -s -f $1/mksquashfs $2/mksquashfs
-#	ln -s -f $1/mksquashfs-lzma $2/mksquashfs-lzma	
+#	ln -s -f $1/mksquashfs-lzma $2/mksquashfs-lzma
 #	ln -s -f $1/unsquashfs $2/unsquashfs
 #	ln -s -f $1/unsquashfs-lzma $2/unsquashfs-lzma
-#	ln -s -f $1/addpattern $2/addpattern	
+#	ln -s -f $1/addpattern $2/addpattern
 #}
 
 #################################################################
@@ -135,7 +135,7 @@ BuildTools ()
 		echo "         missing one or more necessary pre-requisites. See docs for"
 		echo "         a list of pre-requsites."
 		if [ -e "src/untrx" ]; then
-			echo " CONTINUING anyway, attempting to use pre-built binaries (x32 linux)"	
+			echo " CONTINUING anyway, attempting to use pre-built binaries (x32 linux)"
 		else
 			exit 1
 		fi
@@ -160,7 +160,7 @@ BuildTools ()
 #
 # This is to automatically cleanup stuff that's been moved or removed
 #  since older versions. Aren't I nice?
-# 
+#
 DeprecateOldVersion ()
 {
 		echo " Detected leftover stuff from an old version, cleaning"
@@ -185,12 +185,12 @@ DeprecateOldVersion ()
 		mv src/read_* src_old_backup >> upgrade.log 2>&1
 		mv src/sort* src_old_backup >> upgrade.log 2>&1
 		mv src/global.h src_old_backup >> upgrade.log 2>&1
-		Cleanup			
+		Cleanup
 }
 
 
 TestIsRootAndExitIfNot()
-{	
+{
 	if [ $(id -u) != "0" ]; then
 		echo " ERROR: You must be 'root' when extracting and building some images."
 		echo "        This is because some images need to create devices in your fs."
@@ -200,7 +200,7 @@ TestIsRootAndExitIfNot()
 }
 
 TestIsRoot()
-{	
+{
 	if [ $(id -u) != "0" ]; then
 		echo " WARNING: You must be 'root' when extracting and building some images."
 		echo "          This is because some images need to create devices in your fs."

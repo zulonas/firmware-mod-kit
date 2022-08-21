@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # migrates extracted firmware contents from working directory A to B
-# does not migrate firmware format information, allowing an image to 
+# does not migrate firmware format information, allowing an image to
 # be rebuilt into a different format. Particularly useful for reversion.
 #
 SRC="$1"

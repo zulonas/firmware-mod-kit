@@ -22,7 +22,7 @@ VERSION="${SHARED_VERSION}"
 #
 # USAGE: ipkg_install.sh PACKAGE_SOURCE WORKING_DIRECTORY/
 #
-# PACKAGE_SOURCE is the path to the .PKG file. 
+# PACKAGE_SOURCE is the path to the .PKG file.
 #
 # WORKING_DIRECTORY is the working directory supplied to
 #  extract_firmware.sh.
@@ -48,7 +48,7 @@ echo " !!WARNING!!! This script is in early alpha stage of development"
 #
 # basename=name w/o IPK (contrasts below labels)
 CleanupTmp()
-{	
+{
 	echo " Cleanup" >> /dev/null 2>&1
 	rm -rf "$1/tmp" >> /dev/null 2>&1
 	rm -f "$1/$2" >> /dev/null 2>&1
@@ -94,7 +94,7 @@ echo " --------------------------------------------"
 echo " Examining control files $2/rootfs ..."
 echo " Pay attention to the dependencies as you"
 echo "  may need to install some of them ..."
-echo 
+echo
 tar -xzvf "tmp/control.tar.gz" -C "tmp/"
 if [ $? != "0" ] || [ ! -e "tmp/control" ]; then
 	echo " ERROR: Extraction failed of control files (missing from IPK?)"
@@ -107,9 +107,9 @@ else
 OLD_IFS="$IFS"
 IFS="NEWLINE"
 	cat "tmp/control"
-	for i in $( cat "tmp/control" | sed "s/N\/A/ /" ); do		
+	for i in $( cat "tmp/control" | sed "s/N\/A/ /" ); do
 		#echo " | $i"
-		if [ `expr "$i" : "Source"` = 7 ]; then			
+		if [ `expr "$i" : "Source"` = 7 ]; then
 SOURCE_PATH=`echo $i | sed s/Source:/ /`
 			#echo " dbg: handling SOURCE of $SOURCE_PATH"
 			if [ `expr "$SOURCE_PATH" : "http://"` = 7 ] || [ `expr "$SOURCE_PATH" : "ftp://"` = 7 ]; then
@@ -124,7 +124,7 @@ IFS="$OLD_IFS"
 echo " --------------------------------------------"
 ##################################################
 echo " Extracting data files to $2/rootfs ..."
-tar --overwrite -xzvf "tmp/data.tar.gz" -C "../rootfs" 
+tar --overwrite -xzvf "tmp/data.tar.gz" -C "../rootfs"
 # no longer do this, we'll let the user evaluate the tar output..
 #if [ "$?" != "0" ]; then
 #	echo " ERROR: Extraction failed of data.tar.gz - missing from IPK?"
@@ -132,7 +132,7 @@ tar --overwrite -xzvf "tmp/data.tar.gz" -C "../rootfs"
 #	cd "$OLD_DIR"
 #	exit 1
 #else
-	echo " Package installed !"	
+	echo " Package installed !"
 #fi
 ##################################################
 CleanupTmp "." "$INSIDE_NAME"

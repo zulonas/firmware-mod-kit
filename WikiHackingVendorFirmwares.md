@@ -26,7 +26,7 @@ For firmwares with a writable root file system, the read-write JFFS2 file-system
 
 ```
                -- Squashfs (read-only, static file system)
-(root mount)- / 
+(root mount)- /
               \
                -- JFFS2 (modified files held here, copied on write)
 ```

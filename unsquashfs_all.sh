@@ -8,7 +8,7 @@ IMG="$1"
 DIR="$2"
 
 ROOT="./src"
-# should order in ascending version, 
+# should order in ascending version,
 # since newer versions may be able to extact older
 # and we want *first* supporting version (some exceptions apply)
 SUBDIRS="\
@@ -106,7 +106,7 @@ do
 		$unsquashfs-lzma -dest "$DIR" "$IMG" 2>/dev/null &
 		#sleep $TIMEOUT && kill $! 1>&2 >/dev/null
 		wait_for_complete $unsquashfs-lzma
-		
+
 		if [ -d "$DIR" ]
                 then
 			if [ "$(ls "$DIR")" != "" ]
@@ -119,10 +119,10 @@ do
 						MKFS="$mksquashfs-lzma"
 					fi
 				else
-                        		MKFS="$mksquashfs-lzma"
+		MKFS="$mksquashfs-lzma"
 				fi
 			fi
-			
+
 			if [ "$MKFS" == "" ]
 			then
 				rm -rf "$DIR"
@@ -157,7 +157,7 @@ do
 				rm -rf "$DIR"
 			fi
 		fi
-	fi	
+	fi
 
 	if [ "$MKFS" != "" ]
 	then

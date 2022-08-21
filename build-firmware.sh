@@ -83,7 +83,7 @@ case $FS_TYPE in
 		if [ "$(echo $MKFS | grep 'squashfs-4.')" != "" ] && [ "$ENDIANESS" == "-le" ];	then
 			ENDIANESS=""
 		fi
-		
+
 		# Increasing the block size minimizes the resulting image size (larger dictionary). Max block size of 1MB.
 		if [ "$NEXT_PARAM" == "-min" ];	then
 			echo "Blocksize override (-min). Original used $((FS_BLOCKSIZE/1024))KB blocks. New firmware uses 1MB blocks."
@@ -158,7 +158,7 @@ else
 		perl -e "print \"\xFF\"x$FILLER_SIZE" >> "$FWOUT"
 	else
 		echo "Padding of firmware image disabled via -nopad"
-	fi	
+	fi
 fi
 
 # Append the footer to the new firmware image, if there is any footer
@@ -174,7 +174,7 @@ CHECKSUM_ERROR=0
 # Buffalo and some other post-processors obfuscate these images
 # so we must akways try prior to vendor processing below
 ./src/crcalc/crcalc "$FWOUT" "$BINLOG"
-if [ $? -ne 0 ]; then		
+if [ $? -ne 0 ]; then
 	CHECKSUM_ERROR=1
 fi
 
@@ -185,16 +185,16 @@ case $HEADER_TYPE in
 	"tp-link")
 		printf "\nCorrecting TP-Link firmware image ... "
 		src/tpl-tool/src/tpl-tool -x "$FWOUT"
-		if [ $? -ne 0 ]; then				
+		if [ $? -ne 0 ]; then
 			CHECKSUM_ERROR=1
 			printf "ERROR"
-		else		
+		else
 			src/tpl-tool/src/tpl-tool -b "$FWOUT"
 			mv "$FWOUT-new" "$FWOUT"
 			src/tpl-tool/src/tpl-tool -s "$FWOUT"
-			if [ $? -ne 0 ]; then		
+			if [ $? -ne 0 ]; then
 				CHECKSUM_ERROR=1
-				printf "ERROR"				
+				printf "ERROR"
 			else
 				printf "Done"
 				CHECKSUM_ERROR=0
@@ -205,7 +205,7 @@ case $HEADER_TYPE in
 	"buffalo")
 		printf "\nEncrypting Buffalo firmware image ... "
 		src/firmware-tools/buffalo-enc -i "$FWOUT" -o "$FWOUT.enc"
-		if [ $? -ne 0 ]; then					
+		if [ $? -ne 0 ]; then
 			CHECKSUM_ERROR=1
 			printf "ERROR"
 		else

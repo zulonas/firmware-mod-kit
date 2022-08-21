@@ -167,20 +167,20 @@ fi
 # that start with '*' with the word 'FILLER'.
 # for LINE in $(hexdump -C ${IMG} | tail -11 | head -10 | sed -n '1!G;h;$p' | sed -e 's/^*/FILLER/')
 #  do
-# 	if [ "${LINE}" = "FILLER" ]; then
-# 		break
-# 	else
-# 		FOOTER_SIZE=$((${FOOTER_SIZE}+16))
-# 	fi
+#	if [ "${LINE}" = "FILLER" ]; then
+#		break
+#	else
+#		FOOTER_SIZE=$((${FOOTER_SIZE}+16))
+#	fi
 # done
-# 
+#
 # # If a footer was found, dump it out
 # if [ "${FOOTER_SIZE}" != "0" ]; then
-# 	FOOTER_OFFSET=$((${FW_SIZE}-${FOOTER_SIZE}))
-# 	echo "Extracting ${FOOTER_SIZE} byte footer from offset ${FOOTER_OFFSET}"
-# 	dd if="${IMG}" bs=1 skip=${FOOTER_OFFSET} count=${FOOTER_SIZE} of="${FOOTER_IMAGE}" 2>/dev/null
+#	FOOTER_OFFSET=$((${FW_SIZE}-${FOOTER_SIZE}))
+#	echo "Extracting ${FOOTER_SIZE} byte footer from offset ${FOOTER_OFFSET}"
+#	dd if="${IMG}" bs=1 skip=${FOOTER_OFFSET} count=${FOOTER_SIZE} of="${FOOTER_IMAGE}" 2>/dev/null
 # else
-# 	FOOTER_OFFSET=${FW_SIZE}
+#	FOOTER_OFFSET=${FW_SIZE}
 # fi
 
 # Log the parsed values to the CONFLOG for use when re-building the firmware
@@ -222,8 +222,8 @@ case ${FS_TYPE} in
 		            if [ "$(echo ${NumOfIds} | grep -P '\d+' -o)" = "1" ]; then
 		                echo "COMP_XZ_ALL_ROOT='-all-root'" >> ${CONFLOG}
 		            fi
-		        fi		
-		    fi	
+		        fi
+		    fi
 		fi
 		if [ "${FS_COMPRESSION}" = "xz" ]; then
 		    if [ "$(echo $MKFS | grep 'squashfs-4.2')" != "" ]; then
@@ -232,8 +232,8 @@ case ${FS_TYPE} in
 		        XZ_MAGIC=$(dd if="${FSIMG}" bs=1 count=5 skip=96 2>/dev/zero | xxd -p)
 		        if [ "${XZ_MAGIC}" = "FD377A585A" ]; then
 		            FS_ARGS="${FS_ARGS} -noappend"
-		            echo "FS_ARGS='${FS_ARGS}'" >> ${CONFLOG}		        		        
-		        fi		        
+		            echo "FS_ARGS='${FS_ARGS}'" >> ${CONFLOG}
+		        fi
 		    fi
 		fi
 		;;
@@ -243,7 +243,7 @@ case ${FS_TYPE} in
 		;;
 	"yaffs")
 		echo "Extracting YAFFS file system..."
-		${SUDO} ./src/yaffs2utils/unyaffs2 "${FSIMG}" "${ROOTFS}" 2>/dev/null 
+		${SUDO} ./src/yaffs2utils/unyaffs2 "${FSIMG}" "${ROOTFS}" 2>/dev/null
 		echo "MKFS='./src/yaffs2utils/mkyaffs2'" >> "${CONFLOG}"
 		;;
 	"jffs2")
