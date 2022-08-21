@@ -1,6 +1,4 @@
 #!/bin/bash
-BINDIR=`dirname $0`
-. "$BINDIR/common.inc"
 
 IMG="${1}"
 DIR="${2}"
@@ -43,7 +41,7 @@ if [ -e "${DIR}" ]; then
 	exit 1
 fi
 
-Build_Tools
+make -C $(dirname $0)/src
 
 # Get the size, in bytes, of the target firmware image
 FW_SIZE=$(ls -l "${IMG}" | cut -d' ' -f5)

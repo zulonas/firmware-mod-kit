@@ -1,6 +1,4 @@
 #!/bin/bash
-BINDIR=`dirname $0`
-. "$BINDIR/common.inc"
 
 DIR="$1"
 NEXT_PARAM=""
@@ -42,7 +40,7 @@ if [ ! -d "$DIR" ]; then
 fi
 
 # Always try to rebuild, let make decide if necessary
-Build_Tools
+make -C $(dirname $0)/src
 
 echo "Building new $FS_TYPE file system... (this may take several minutes!)"
 
