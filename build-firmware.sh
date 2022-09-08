@@ -222,8 +222,4 @@ else
 	printf "\nFirmware header not supported; firmware checksums may be incorrect. "
 fi
 
-if [ -e "$FSOUT" ]; then
-	rm -f "$FSOUT"
-fi
-
 printf "\nNew firmware image has been saved to: $FWOUT\n"
