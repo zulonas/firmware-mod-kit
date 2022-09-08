@@ -19,7 +19,7 @@ fi
 
 if [ $UID -ne 0 ]
 then
-	SUDO="sudo"
+	SUDO="fakeroot"
 fi
 
 if [ "$ENDIANESS" == "" ]

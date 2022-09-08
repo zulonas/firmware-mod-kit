@@ -9,7 +9,7 @@ fi
 
 # Need to extract file systems as ROOT
 if [ "$(id -ru)" != "0" ]; then
-	SUDO="sudo"
+	SUDO="fakeroot"
 else
 	SUDO=""
 fi
