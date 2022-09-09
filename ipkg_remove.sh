@@ -2,7 +2,11 @@
 #
 # $Id: ipkg_remove.sh 336 2012-08-04 00:12:14Z jeremy.collake@gmail.com $
 #
+# Make sure we're operating out of the FMK directory
+cd $(dirname $(readlink -f $0))
+
 . "./shared.inc"
+cd -
 ### 20110225-MCT The VERSION is set in the shared.inc file from a single external source now.
 VERSION="${SHARED_VERSION}"
 ##################################################
